@@ -938,7 +938,7 @@ function html_recent($first = 0, $show_changes = 'both') {
  *
  * @param string $ns
  */
-function html_index($ns){
+function html_index($ns, $embedded=false){
     global $conf;
     global $ID;
     $ns  = cleanID($ns);
@@ -948,7 +948,9 @@ function html_index($ns){
     }
     $ns  = utf8_encodeFN(str_replace(':','/',$ns));
 
-    echo p_locale_xhtml('index');
+    if (!$embedded) {
+        echo p_locale_xhtml('index');
+    }
     echo '<div id="index__tree">';
 
     $data = array();
